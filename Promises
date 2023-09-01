@@ -23,3 +23,56 @@ importantAction("standup comedy").then((res)=>{
         console.log(res1);
 
 })
+
+
+/* const express=require('express');
+
+const app=express();
+
+app.get("/",(req,res)=>{
+    res.json("hello");
+})
+
+app.listen(3000,()=>{
+    console.log("listening on port 3000")
+}) */
+
+// Import the necessary libraries, if required
+// For Node.js:
+ const axios = require('axios');
+
+// For browsers, you can use the fetch API directly
+// Or you can use a library like Axios for consistency
+
+// Define the API endpoint URL
+const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+
+// Create a function that returns a promise for the API call
+function fetchApiData() {
+  return new Promise((resolve, reject) => {
+    // Make the API request
+    // For Node.js using Axios:
+    // axios.get(apiUrl)
+    //   .then(response => resolve(response.data))
+    //   .catch(error => reject(error));
+
+    // For browsers using the fetch API:
+    axios.get(apiUrl)
+      .then(response => resolve(response.data))
+         .catch(error => reject(error));
+  });
+}
+let result=null;
+// Call the API function and handle the promise
+fetchApiData()
+  .then(data => {
+    console.log('API data:', data);
+    result=data;
+    console.log("result",result)
+    // You can work with the API data here
+  })
+  .catch(error => {
+    console.error('API error:', error);
+    // Handle errors here
+  });
+
